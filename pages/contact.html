@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - OpenBWC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Styles & CSS Variables */
+        :root {
+            --bg-light: #ffffff;
+            --text-light: #111827;
+            --accent-light: #FB923C; /* Light Orange */
+            --accent-hover-light: #F97316;
+            --border-light: #E5E7EB;
+            --card-bg-light: #F9FAFB;
+            --card-hover-border-light: var(--accent-light);
+
+            --bg-dark: #111827;
+            --text-dark: #F9FAFB;
+            --accent-dark: #FDBA74; /* Lighter Orange for Dark Mode */
+            --accent-hover-dark: #FB923C;
+            --border-dark: #374151;
+            --card-bg-dark: #1F2937;
+            --card-hover-border-dark: var(--accent-dark);
+
+            /* Default to light mode */
+            --bg-color: var(--bg-light);
+            --text-color: var(--text-light);
+            --accent-color: var(--accent-light);
+            --accent-hover-color: var(--accent-hover-light);
+            --border-color: var(--border-light);
+            --card-bg-color: var(--card-bg-light);
+            --card-hover-border-color: var(--card-hover-border-light);
+        }
+
+        body.dark {
+            --bg-color: var(--bg-dark);
+            --text-color: var(--text-dark);
+            --accent-color: var(--accent-dark);
+            --accent-hover-color: var(--accent-hover-dark);
+            --border-color: var(--border-dark);
+            --card-bg-color: var(--card-bg-dark);
+            --card-hover-border-color: var(--card-hover-border-dark);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* General Component Styling */
+        .nav-link {
+            color: var(--text-color);
+            transition: color 0.2s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-link.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        /* Theme Toggle Switch */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 26px;
+            position: relative;
+            width: 50px;
+        }
+        .theme-switch input {
+            display:none;
+        }
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 18px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 18px;
+        }
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50" style="background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 nav-link">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--accent-color)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V5C19 3.89543 18.1046 3 17 3ZM7 2H17C18.6569 2 20 3.34315 20 5V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V5C4 3.34315 5.34315 2 7 2Z" fill="var(--accent-color)"/>
+                    <circle cx="12" cy="12" r="4" stroke="var(--accent-color)" stroke-width="1.5"/>
+                    <circle cx="12" cy="6" r="1" fill="var(--accent-color)"/>
+                </svg>
+                <span class="font-bold text-xl">OpenBWC</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="team.html" class="nav-link">Who We Are</a>
+                <a href="publications.html" class="nav-link">Publications</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" style="color: var(--text-color);">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="index.html" class="block nav-link">Home</a>
+            <a href="about.html" class="block nav-link">About</a>
+            <a href="team.html" class="block nav-link">Who We Are</a>
+            <a href="publications.html" class="block nav-link">Publications</a>
+            <a href="contact.html" class="block nav-link active">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Get In Touch</h2>
+                <p class="mt-4 text-lg" style="opacity: 0.8;">Have questions or want to collaborate? Reach out to us.</p>
+            </div>
+            <form class="mt-12 space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium">Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 rounded-md" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);" placeholder="Your Name">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium">Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 rounded-md" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);" placeholder="you@example.com">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium">Message</label>
+                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 rounded-md" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);" placeholder="Your message..."></textarea>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="px-6 py-3 font-semibold rounded-lg" style="background-color: var(--accent-color); color: var(--bg-dark); transition: background-color 0.2s ease;">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--card-bg-color); border-top: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
+        <div class="container mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
+            <p style="opacity: 0.7;">&copy; 2025 OpenBWC Project. All Rights Reserved.</p>
+            <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-orange-400 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Theme Toggle Logic ---
+            const themeToggle = document.getElementById('checkbox');
+            
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark');
+                    themeToggle.checked = true;
+                } else {
+                    document.body.classList.remove('dark');
+                    themeToggle.checked = false;
+                }
+            }
+
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    localStorage.setItem('theme', 'dark');
+                    applyTheme('dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    applyTheme('light');
+                }
+            });
+
+            // Apply saved theme on initial load
+            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light
+            applyTheme(savedTheme);
+        });
+    </script>
+</body>
+</html>
