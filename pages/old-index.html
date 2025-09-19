@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenBWC - Open Body-Worn Camera </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <style>
+        /* Custom Styles & CSS Variables */
+        :root {
+            --bg-light: #ffffff;
+            --text-light: #111827;
+            --accent-light: #FB923C; /* Light Orange */
+            --accent-hover-light: #F97316;
+            --border-light: #E5E7EB;
+            --card-bg-light: #F9FAFB;
+            --card-hover-border-light: var(--accent-light);
+
+            --bg-dark: #111827;
+            --text-dark: #F9FAFB;
+            --accent-dark: #FDBA74; /* Lighter Orange for Dark Mode */
+            --accent-hover-dark: #FB923C;
+            --border-dark: #374151;
+            --card-bg-dark: #1F2937;
+            --card-hover-border-dark: var(--accent-dark);
+
+            /* Default to light mode */
+            --bg-color: var(--bg-light);
+            --text-color: var(--text-light);
+            --accent-color: var(--accent-light);
+            --accent-hover-color: var(--accent-hover-light);
+            --border-color: var(--border-light);
+            --card-bg-color: var(--card-bg-light);
+            --card-hover-border-color: var(--card-hover-border-light);
+        }
+
+        body.dark {
+            --bg-color: var(--bg-dark);
+            --text-color: var(--text-dark);
+            --accent-color: var(--accent-dark);
+            --accent-hover-color: var(--accent-hover-dark);
+            --border-color: var(--border-dark);
+            --card-bg-color: var(--card-bg-dark);
+            --card-hover-border-color: var(--card-hover-border-dark);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* General Component Styling */
+        .nav-link {
+            color: var(--text-color);
+            transition: color 0.2s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-link.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Team Card Hover Effect */
+        .team-card-large {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .team-card-large:hover {
+            transform: translateY(-5px);
+            border-color: var(--card-hover-border-color);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.07), 0 8px 10px -6px rgba(0,0,0,0.1);
+        }
+        
+        /* BWC Animation */
+        #bwc-shutter {
+            animation: open-close 8s infinite ease-in-out;
+            transform-origin: 50% 50%;
+        }
+
+        #bwc-rec-light {
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes open-close {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.05); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        /* Typing Animation Cursor */
+        .typed-cursor {
+            color: var(--accent-color);
+            opacity: 1;
+            animation: typedjsBlink 0.7s infinite;
+        }
+        @keyframes typedjsBlink {
+            50% { opacity: 0.0; }
+        }
+
+        /* Theme Toggle Switch */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 26px;
+            position: relative;
+            width: 50px;
+        }
+        .theme-switch input {
+            display:none;
+        }
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 18px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 18px;
+        }
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50" style="background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" data-page="home" class="flex items-center space-x-2 nav-link">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--accent-color)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V5C19 3.89543 18.1046 3 17 3ZM7 2H17C18.6569 2 20 3.34315 20 5V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V5C4 3.34315 5.34315 2 7 2Z" fill="var(--accent-color)"/>
+                    <circle cx="12" cy="12" r="4" stroke="var(--accent-color)" stroke-width="1.5"/>
+                    <circle cx="12" cy="6" r="1" fill="var(--accent-color)"/>
+                </svg>
+                <span class="font-bold text-xl">OpenBWC</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="about">About</a>
+                <a href="#" class="nav-link" data-page="team">Who We Are</a>
+                <a href="#" class="nav-link" data-page="publications">Publications</a>
+                <a href="#" class="nav-link" data-page="contact">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" style="color: var(--text-color);">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#" class="block nav-link active" data-page="home">Home</a>
+            <a href="#" class="block nav-link" data-page="about">About</a>
+            <a href="#" class="block nav-link" data-page="team">Who We Are</a>
+            <a href="#" class="block nav-link" data-page="publications">Publications</a>
+            <a href="#" class="block nav-link" data-page="contact">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+
+        <section id="home" class="content-section active">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight min-h-[144px] md:min-h-[192px]" style="color: var(--text-color);">
+                        <span id="typed-headline"></span>
+                    </h1>
+                    <p class="mt-6 text-lg" style="color: var(--text-color); opacity: 0.8;">
+                        Leveraging AI to ethically and transparently analyze Body-Worn Camera footage for evidence-based policing reform.
+                    </p>
+                    <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                        <a href="#" data-page="about" class="nav-link-button px-6 py-3 font-semibold rounded-lg" style="background-color: var(--accent-color); color: var(--bg-dark); transition: background-color 0.2s ease;">Learn More</a>
+                        <a href="#github" class="px-6 py-3 font-semibold rounded-lg" style="background-color: var(--card-bg-color); color: var(--text-color); border: 1px solid var(--border-color); transition: background-color 0.2s ease;">View on GitHub</a>
+                    </div>
+                </div>
+                <div class="flex justify-center md:justify-end items-center">
+                    <div class="relative w-64 h-80 rounded-lg" style="background-color: #2c3e50;">
+                        <div class="absolute inset-0 bg-repeat p-4" style="background-image: url('data:image/svg+xml,%3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%2334495e%22 fill-opacity=%220.4%22 fill-rule=%22evenodd%22%3E%3Cpath d=%22M0 0h20v1H0zM0 4h20v1H0zM0 8h20v1H0zM0 12h20v1H0zM0 16h20v1H0zM0 20h20v1H0z%22/%3E%3C/g%3E%3C/svg%3E');">
+                            <div class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-48 bg-gray-800 rounded-md shadow-2xl p-2 border-2 border-gray-700">
+                                <svg width="100%" height="100%" viewBox="0 0 100 150" class="absolute inset-0">
+                                    <circle cx="50" cy="75" r="30" fill="#222"/>
+                                    <circle cx="50" cy="75" r="25" fill="#333"/>
+                                    <rect id="bwc-shutter" x="20" y="45" width="60" height="60" fill="#111" />
+                                    <circle id="bwc-rec-light" cx="85" cy="15" r="5" fill="#FF0000" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">About OpenBWC</h2>
+                <p class="mt-4 text-lg" style="opacity: 0.8;">Our commitment to transparency and ethical AI in policing.</p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-2 gap-12">
+                <div class="p-8 rounded-lg" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);">
+                    <h3 class="text-2xl font-semibold" style="color: var(--accent-color);">Our Mission</h3>
+                    <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                        Accurately interpret Police BWC footage by employing open source ML, CV, & NLP technologies, resulting in identifiable behavioral patterns among police & civilians, analyzed in an interdisciplinary setting.
+                    </p>
+                </div>
+                <div class="p-8 rounded-lg" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);">
+                    <h3 class="text-2xl font-semibold" style="color: var(--accent-color);">Our Vision</h3>
+                    <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                        Improve policing through evidence-based recommendations sourced from BWC footage by leveraging AI in an ethical and unbiased manner.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-24">
+                <div class="max-w-4xl mx-auto text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold">Our Journey</h3>
+                    <p class="mt-4 text-lg" style="opacity: 0.8;">A look back at our key milestones over the last year.</p>
+                </div>
+                <div class="relative max-w-2xl mx-auto">
+                    <div class="absolute left-4 top-2 h-full w-0.5 -ml-[1px]" style="background-color: var(--border-color);"></div>
+                    
+                    <div class="space-y-12">
+                        <div class="relative pl-12">
+                            <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                            <p class="font-semibold" style="color: var(--accent-color);">August 2024</p>
+                            <h4 class="font-bold text-xl mt-1">Project Conception</h4>
+                            <p class="mt-1 text-base" style="opacity: 0.9;">Initial research into leveraging open-source AI for police accountability began, forming the foundational ideas for OpenBWC.</p>
+                        </div>
+
+                        <div class="relative pl-12">
+                            <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                            <p class="font-semibold" style="color: var(--accent-color);">November 2024</p>
+                            <h4 class="font-bold text-xl mt-1">Team Formation</h4>
+                            <p class="mt-1 text-base" style="opacity: 0.9;">An interdisciplinary team of ML, Criminology, and NLP researchers was assembled to tackle the project's complex challenges.</p>
+                        </div>
+                        
+                        <div class="relative pl-12">
+                            <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                            <p class="font-semibold" style="color: var(--accent-color);">February 2025</p>
+                            <h4 class="font-bold text-xl mt-1">Prototype Development</h4>
+                            <p class="mt-1 text-base" style="opacity: 0.9;">Began development of the core analysis engine, focusing on computer vision models for object and behavior detection.</p>
+                        </div>
+                        
+                        <div class="relative pl-12">
+                            <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                            <p class="font-semibold" style="color: var(--accent-color);">May 2025</p>
+                            <h4 class="font-bold text-xl mt-1">Data Partnership</h4>
+                            <p class="mt-1 text-base" style="opacity: 0.9;">Secured first partnership for anonymized BWC footage, enabling real-world testing and model refinement.</p>
+                        </div>
+                        
+                        <div class="relative pl-12">
+                            <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                            <p class="font-semibold" style="color: var(--accent-color);">August 2025</p>
+                            <h4 class="font-bold text-xl mt-1">Public Launch</h4>
+                            <p class="mt-1 text-base" style="opacity: 0.9;">Launched the OpenBWC website and initial open-source code repositories to engage the wider community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="content-section">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Who We Are</h2>
+                <p class="mt-4 text-lg" style="opacity: 0.8;">The interdisciplinary team driving OpenBWC forward.</p>
+            </div>
+            <div id="team-cards" class="mt-16 max-w-4xl mx-auto space-y-12">
+                </div>
+        </section>
+
+        <section id="publications" class="content-section">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Publications</h2>
+                <p class="mt-4 text-lg" style="opacity: 0.8;">Our research and findings.</p>
+                <p class="mt-8">
+                    Content for this section is coming soon. Please check back later for our published papers, articles, and conference presentations.
+                </p>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold">Get In Touch</h2>
+                    <p class="mt-4 text-lg" style="opacity: 0.8;">Have questions or want to collaborate? Reach out to us.</p>
+                </div>
+                <form class="mt-12 space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 rounded-md" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 rounded-md" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 rounded-md" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);" placeholder="Your message..."></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="px-6 py-3 font-semibold rounded-lg" style="background-color: var(--accent-color); color: var(--bg-dark); transition: background-color 0.2s ease;">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="background-color: var(--card-bg-color); border-top: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
+        <div class="container mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
+            <p style="opacity: 0.7;">&copy; 2025 OpenBWC Project. All Rights Reserved.</p>
+            <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                <a id="github" href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-orange-400 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Typing Animation ---
+            const typed = new Typed('#typed-headline', {
+                strings: [
+                    'Open-Source Insights for <span style="color: var(--accent-color);">Police Accountability</span>'
+                ],
+                typeSpeed: 80,
+                startDelay: 500,
+                loop: false,
+                showCursor: true,
+                cursorChar: '|',
+                contentType: 'html',
+                onComplete: (self) => {
+                    // Hides the cursor when typing is complete
+                    if (self.cursor) {
+                        self.cursor.style.display = 'none';
+                    }
+                },
+            });
+
+            // --- Team Members Data ---
+            const teamMembers = [
+                { 
+                    name: 'Dr. Ernest Fokoue', 
+                    role: 'Principal Investigator', 
+                    initials: 'EF',
+                    bio: 'As the Principal Investigator, Dr. Fokoue provides the strategic vision and academic leadership for the OpenBWC project. With a Ph.D. in Statistics and extensive experience in machine learning and data science, he guides the research methodology, ensuring ethical considerations and statistical rigor are at the core of our work. His passion lies in applying advanced computational techniques to solve pressing societal problems.',
+                    github: '#',
+                    linkedin: '#'
+                },
+                { 
+                    name: 'Jonathan Bateman', 
+                    role: 'ML & Criminology Researcher', 
+                    initials: 'JB',
+                    bio: 'Jonathan bridges the critical gap between criminology and machine learning. His research focuses on developing fair and interpretable models to identify behavioral patterns in law enforcement interactions. With a background in both criminal justice and data analytics, he is instrumental in defining the features and metrics that matter for creating meaningful, evidence-based policy recommendations.',
+                    github: '#',
+                    linkedin: '#'
+                },
+                { 
+                    name: 'Anita Srbinovska', 
+                    role: 'NLP & Criminology Researcher', 
+                    initials: 'AS',
+                    bio: 'Anita leads the Natural Language Processing (NLP) efforts, turning unstructured audio and text from BWC footage into valuable data. Her work involves sentiment analysis, topic modeling, and speech-to-text processing to analyze the language used during police-civilian encounters. Her dual expertise ensures our analysis of verbal communication is both technically sound and contextually relevant to criminology.',
+                    github: '#',
+                    linkedin: '#'
+                },
+                { 
+                    name: 'Angela Srbinovska', 
+                    role: 'ML & Computer Vision Researcher', 
+                    initials: 'AS',
+                    bio: 'Angela is the driving force behind our computer vision models. She specializes in object detection, activity recognition, and pose estimation to analyze the visual components of BWC footage. Her work is crucial for identifying non-verbal cues, the presence of weapons, and the physical dynamics of interactions, providing an objective layer of visual evidence to our analysis.',
+                    github: '#',
+                    linkedin: '#'
+                },
+                { 
+                    name: 'Vivek Senthil', 
+                    role: 'ML & Data Engineering Researcher', 
+                    initials: 'VS',
+                    bio: 'Vivek architects the robust data pipelines and machine learning infrastructure that power the OpenBWC platform. He focuses on creating scalable, efficient systems for processing vast amounts of video data. His expertise ensures that our models are not only accurate but also deployable and maintainable, making our research accessible and practical for real-world application.',
+                    github: '#',
+                    linkedin: '#'
+                }
+            ];
+
+            const teamCardsContainer = document.getElementById('team-cards');
+            teamMembers.forEach(member => {
+                const card = document.createElement('div');
+                card.className = 'team-card-large flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 p-8 rounded-xl';
+                card.style.backgroundColor = 'var(--card-bg-color)';
+                
+                card.innerHTML = `
+                    <div class="flex-shrink-0">
+                        <div class="w-32 h-32 rounded-full flex items-center justify-center text-white text-4xl font-bold" style="background: linear-gradient(135deg, var(--accent-color), var(--accent-hover-color));">
+                            ${member.initials}
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold">${member.name}</h3>
+                        <p class="font-semibold text-md mt-1 uppercase tracking-wider" style="color: var(--accent-color);">${member.role}</p>
+                        <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                            ${member.bio}
+                        </p>
+                        <div class="mt-6 flex justify-center md:justify-start items-center gap-4">
+                            <a href="${member.github}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="${member.linkedin}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                teamCardsContainer.appendChild(card);
+            });
+
+            // --- Page Navigation Logic ---
+            const navLinks = document.querySelectorAll('.nav-link, .nav-link-button');
+            const contentSections = document.querySelectorAll('.content-section');
+            const allNavLinks = document.querySelectorAll('.nav-link');
+
+            function switchPage(pageId) {
+                // Hide all sections
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                // Show the target section
+                const targetSection = document.getElementById(pageId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+
+                // Update active state on nav links
+                allNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Close mobile menu after navigation
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.add('hidden');
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.dataset.page;
+                    switchPage(pageId);
+                    window.scrollTo(0, 0); // Scroll to top on page change
+                });
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Theme Toggle Logic ---
+            const themeToggle = document.getElementById('checkbox');
+            
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark');
+                    themeToggle.checked = true;
+                } else {
+                    document.body.classList.remove('dark');
+                    themeToggle.checked = false;
+                }
+            }
+
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    localStorage.setItem('theme', 'dark');
+                    applyTheme('dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    applyTheme('light');
+                }
+            });
+
+            // Apply saved theme on initial load
+            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light
+            applyTheme(savedTheme);
+        });
+    </script>
+</body>
+</html>
