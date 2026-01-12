@@ -2,9 +2,10 @@
 
 /* --- Variables & Theme Setup --- */
 :root {
+    /* Color Palette */
     --bg-light: #ffffff;
     --text-light: #111827;
-    --accent-light: #FB923C; /* Light Orange */
+    --accent-light: #FB923C;
     --accent-hover-light: #F97316;
     --border-light: #E5E7EB;
     --card-bg-light: #F9FAFB;
@@ -12,13 +13,13 @@
 
     --bg-dark: #111827;
     --text-dark: #F9FAFB;
-    --accent-dark: #FDBA74; /* Lighter Orange for Dark Mode */
+    --accent-dark: #FDBA74;
     --accent-hover-dark: #FB923C;
     --border-dark: #374151;
     --card-bg-dark: #1F2937;
     --card-hover-border-dark: var(--accent-dark);
 
-    /* Default to light mode */
+    /* Current Theme Variables */
     --bg-color: var(--bg-light);
     --text-color: var(--text-light);
     --accent-color: var(--accent-light);
@@ -26,6 +27,11 @@
     --border-color: var(--border-light);
     --card-bg-color: var(--card-bg-light);
     --card-hover-border-color: var(--card-hover-border-light);
+    
+    /* Modern Mobile Header Variables */
+    --header-bg-light-trans: rgba(255, 255, 255, 0.8);
+    --header-bg-dark-trans: rgba(17, 24, 39, 0.8);
+    --header-bg: var(--header-bg-light-trans);
 }
 
 body.dark {
@@ -36,6 +42,7 @@ body.dark {
     --border-color: var(--border-dark);
     --card-bg-color: var(--card-bg-dark);
     --card-hover-border-color: var(--card-hover-border-dark);
+    --header-bg: var(--header-bg-dark-trans);
 }
 
 body {
@@ -43,45 +50,76 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* --- Navigation --- */
+/* --- Modern Glass Header --- */
 header {
-    background-color: var(--bg-color);
+    background-color: var(--header-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
+/* --- Mobile Menu Animation --- */
+#mobile-menu {
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+#mobile-menu.open {
+    max-height: 400px;
+    opacity: 1;
+    padding-bottom: 1rem;
+}
+
+/* --- Navigation Links --- */
 .nav-link {
     color: var(--text-color);
     transition: color 0.2s ease;
     position: relative;
     padding-bottom: 4px;
+    font-weight: 500;
 }
 
-.nav-link:hover {
+#mobile-menu .nav-link {
+    display: block;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+#mobile-menu .nav-link:last-child {
+    border-bottom: none;
+}
+
+.nav-link:hover, .nav-link.active {
     color: var(--accent-color);
 }
 
-.nav-link.active {
-    color: var(--accent-color);
-    font-weight: 600;
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--accent-color);
+@media (min-width: 768px) {
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--accent-color);
+    }
 }
 
 /* --- Components & Utils --- */
 .logo-img {
-    height: 32px;
+    height: 64px; /* Increased height for a larger logo */
     width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
 }
 
 footer {
@@ -113,6 +151,7 @@ footer {
     right: 0;
     top: 0;
     transition: .4s;
+    border-radius: 34px;
 }
 .slider:before {
     background-color: #fff;
@@ -122,6 +161,7 @@ footer {
     left: 4px;
     position: absolute;
     transition: .4s;
+    border-radius: 50%;
     width: 18px;
 }
 input:checked + .slider {
@@ -130,28 +170,19 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(24px);
 }
-.slider.round {
-    border-radius: 34px;
-}
-.slider.round:before {
-    border-radius: 50%;
-}
 
-/* --- Animations (Home Page) --- */
+/* --- Animations --- */
 #bwc-shutter {
     animation: open-close 8s infinite ease-in-out;
     transform-origin: 50% 50%;
 }
-
 #bwc-rec-light {
     animation: blink 1.5s infinite;
 }
-
 @keyframes open-close {
     0%, 100% { transform: scaleY(1); }
     50% { transform: scaleY(0.05); }
 }
-
 @keyframes blink {
     0%, 100% { opacity: 0.2; }
     50% { opacity: 1; }
@@ -167,7 +198,7 @@ input:checked + .slider:before {
     50% { opacity: 0.0; }
 }
 
-/* --- Team Page Styles --- */
+/* --- Team Cards --- */
 .team-card-large {
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     border: 1px solid var(--border-color);
