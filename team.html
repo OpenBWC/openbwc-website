@@ -15,22 +15,26 @@
     <header class="sticky top-0 z-50" style="background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-2 nav-link">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--accent-color)" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V5C19 3.89543 18.1046 3 17 3ZM7 2H17C18.6569 2 20 3.34315 20 5V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V5C4 3.34315 5.34315 2 7 2Z" fill="var(--accent-color)"/>
-                    <circle cx="12" cy="12" r="4" stroke="var(--accent-color)" stroke-width="1.5"/>
-                    <circle cx="12" cy="6" r="1" fill="var(--accent-color)"/>
-                </svg>
-                <span class="font-bold text-xl">OpenBWC</span>
+                <a href="index.html" class="flex items-center space-x-2 nav-link">
+                <img src="assets/images/logos/openbwc-square-logo.jpg" alt="OpenBWC Logo" class="logo-img">
+                </a>
             </a>
 
-            <div class="hidden md:flex items-center space-x-8">
+            <div id="mobile-menu" class="md:hidden px-6 bg-opacity-95" style="background-color: var(--bg-color);">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="team.html" class="nav-link active">Who We Are</a>
+                <a href="team.html" class="nav-link">Who We Are</a>
                 <a href="publications.html" class="nav-link">Publications</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
 
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="team.html" class="nav-link">Who We Are</a>
+                <a href="publications.html" class="nav-link">Publications</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
             <div class="flex items-center space-x-4">
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="checkbox">
@@ -45,13 +49,7 @@
                 </button>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
-            <a href="index.html" class="block nav-link">Home</a>
-            <a href="about.html" class="block nav-link">About</a>
-            <a href="team.html" class="block nav-link active">Who We Are</a>
-            <a href="publications.html" class="block nav-link">Publications</a>
-            <a href="contact.html" class="block nav-link">Contact</a>
-        </div>
+        
     </header>
 
     <main class="container mx-auto px-6 py-8 md:py-16">

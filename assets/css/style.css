@@ -113,7 +113,7 @@ header {
 
 /* --- Components & Utils --- */
 .logo-img {
-    height: 64px; /* Increased height for a larger logo */
+    height: 128px; /* Increased height for a larger logo */
     width: auto;
     transition: transform 0.3s ease;
 }
