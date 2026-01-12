@@ -837,15 +837,16 @@ footer {
     align-items: center;
     gap: 3rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     opacity: 0.8;
 }
 
 .partner-logo {
-    height: 40px; /* Fixed height ensures uniformity */
+    height: 150px; /* Fixed height ensures uniformity */
     width: auto;
     object-fit: contain;
     filter: grayscale(100%); /* Start black & white */
-    opacity: 0.6;
+    opacity: 0.7;
     transition: all var(--transition-base);
 }
 
@@ -855,23 +856,41 @@ footer {
     transform: scale(1.05);
 }
 
-/* Dark mode adjustment for logos if they are dark images */
+/* --- Dark Mode Adjustments --- */
+
+/* Default Dark Mode Behavior:
+   Show logos in full color, slightly brightened to pop against dark bg.
+   This is best for complex seals like DOJ or light seals like UAlbany. */
 [data-theme="dark"] .partner-logo {
-    filter: grayscale(100%) brightness(0) invert(1); /* Turns dark logos white */
-    opacity: 0.5;
+    filter: grayscale(0%) brightness(1.1);
+    opacity: 0.9;
 }
 
 [data-theme="dark"] .partner-logo:hover {
-    filter: none; /* Show original color on hover */
+     filter: brightness(1.2); /* Just brighten slightly on hover */
+     opacity: 1;
+}
+
+/* SPECIAL UTILITY CLASS: .invert-dark
+   Add this class in HTML to logos that are mostly dark text (like RIT).
+   It turns them into a flat white silhouette in dark mode. */
+[data-theme="dark"] .partner-logo.invert-dark {
+    filter: brightness(0) invert(1) !important; /* Force black to white */
+    opacity: 0.8;
+}
+
+[data-theme="dark"] .partner-logo.invert-dark:hover {
     opacity: 1;
+    /* Keep the white filter on hover, just add scale */
+    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,0.3)) !important;
 }
 
 
 /* --- Press Room Section --- */
 .press-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider cards */
+    gap: 1.5rem;
 }
 
 .press-card {
@@ -881,11 +900,14 @@ footer {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start; /* Left align for readability */
+    justify-content: space-between;
+    text-align: left;
     transition: all var(--transition-base);
-    text-decoration: none; /* Remove underline from link */
+    text-decoration: none;
     height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .press-card:hover {
@@ -894,41 +916,59 @@ footer {
     border-color: var(--primary-orange);
 }
 
-.press-logo-container {
-    height: 60px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
+/* New: Decorative accent line on hover */
+.press-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-orange);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: bottom;
 }
 
-.press-logo {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
+.press-card:hover::before {
+    transform: scaleY(1);
 }
 
-/* In dark mode, invert press logos if they are black text transparent PNGs */
-[data-theme="dark"] .press-logo {
-    filter: brightness(0) invert(1);
+.press-source {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    color: var(--primary-orange);
+    margin-bottom: 0.75rem;
+    display: inline-block;
+    background: var(--bg-secondary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
 }
 
 .press-title {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.125rem;
     color: var(--text-color);
-    line-height: 1.5;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Pushes the "Read" link to the bottom */
 }
 
-.press-date {
-    font-size: 0.8rem;
+.press-link-text {
+    font-size: 0.875rem;
+    font-weight: 500;
     color: var(--text-secondary);
-    margin-top: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
 }
 
+.press-card:hover .press-link-text {
+    color: var(--primary-orange);
+}
 .mb-1 { margin-bottom: var(--spacing-xs); }
 .mb-2 { margin-bottom: var(--spacing-sm); }
 .mb-3 { margin-bottom: var(--spacing-md); }
