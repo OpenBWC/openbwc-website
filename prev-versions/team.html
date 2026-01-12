@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Are - OpenBWC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50" style="background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 nav-link">
+                <a href="index.html" class="flex items-center space-x-2 nav-link">
+                <img src="assets/images/logos/openbwc-rectangle-logo.png" alt="OpenBWC Logo" class="logo-img">
+                </a>
+                </a>
+            </a>
+
+            <div id="mobile-menu" class="md:hidden px-6 bg-opacity-95" style="background-color: var(--bg-color);">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="team.html" class="nav-link">Who We Are</a>
+                <a href="publications.html" class="nav-link">Publications</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="team.html" class="nav-link">Who We Are</a>
+                <a href="publications.html" class="nav-link">Publications</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" style="color: var(--text-color);">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold">Who We Are</h2>
+            <p class="mt-4 text-lg" style="opacity: 0.8;">The interdisciplinary team driving OpenBWC forward.</p>
+        </div>
+        <div class="mt-16 max-w-4xl mx-auto space-y-12">
+            <!--Dr. Fokoue-->
+            <div class="team-card-large flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 p-8 rounded-xl" style="background-color: var(--card-bg-color);">
+                <div class="flex-shrink-0">
+                    <div class="w-32 h-32 rounded-full flex items-center justify-center text-white text-4xl font-bold" style="background: linear-gradient(135deg, var(--accent-color), var(--accent-hover-color));">
+                        EF
+                    </div>
+                </div>
+                
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Dr. Ernest Fokoue</h3>
+                    <p class="font-semibold text-md mt-1 uppercase tracking-wider" style="color: var(--accent-color);">Principal Investigator</p>
+                    <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                        As the Principal Investigator, Dr. Fokoue provides the strategic vision and academic leadership for the OpenBWC project. With a Ph.D. in Statistics and extensive experience in machine learning and data science, he guides the research methodology, ensuring ethical considerations and statistical rigor are at the core of our work. His passion lies in applying advanced computational techniques to solve pressing societal problems.
+                    </p>
+                    <div class="mt-6 flex justify-center md:justify-start items-center gap-4">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ernest-fokoue-b342401/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--Jonathan-->
+            <div class="team-card-large flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 p-8 rounded-xl" style="background-color: var(--card-bg-color);">
+               <div class="flex-shrink-0">
+                    <div class="w-32 h-32 rounded-full overflow-hidden" style="background: linear-gradient(135deg, var(--accent-color), var(--accent-hover-color));">
+                        <img src="assets/images/headshots/jonathan-headshot.JPG" alt="jonathan-bateman-headshot" class="team-member-photo">
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Jonathan Bateman</h3>
+                    <p class="font-semibold text-md mt-1 uppercase tracking-wider" style="color: var(--accent-color);">ML & Criminology Researcher</p>
+                    <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                        Jonathan bridges the critical gap between criminology and machine learning. His research focuses on developing fair and interpretable models to identify behavioral patterns in law enforcement interactions. With a background in both criminal justice and data analytics, he is instrumental in defining the features and metrics that matter for creating meaningful, evidence-based policy recommendations.
+                    </p>
+                    <div class="mt-6 flex justify-center md:justify-start items-center gap-4">
+                        <a href="https://github.com/Trust-Worthy" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/jonathankbateman/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--Anita-->
+            <div class="team-card-large flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 p-8 rounded-xl" style="background-color: var(--card-bg-color);">
+              
+                <div class="flex-shrink-0">
+                    <div class="w-32 h-32 rounded-full overflow-hidden" style="background: linear-gradient(135deg, var(--accent-color), var(--accent-hover-color));">
+                        <img src="assets/images/headshots/anita-headshot.JPG" alt="anita-headshot" class="team-member-photo">
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Anita Srbinovska</h3>
+                    <p class="font-semibold text-md mt-1 uppercase tracking-wider" style="color: var(--accent-color);">AI Researcher</p>
+                    <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                        Anita leads the natural language processing (NLP) and multimodal understanding efforts for the OpenBWC initiative. She develops pipelines that transform raw police body-worn camera (BWC) audio and transcripts into structured data, including Whisper-based speech-to-text, diarization, transcript correction workflows, and semantic parsing. She also works on ontology-driven reasoning, mapping police narratives into OWL knowledge graphs to support analysis, transparency, and research in policing.
+                    </p>
+                    <div class="mt-6 flex justify-center md:justify-start items-center gap-4">
+                        <a href="https://github.com/AnitaSrbinovska" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/anita-srbinovska-a24836249/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--Angela-->
+            <div class="team-card-large flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 p-8 rounded-xl" style="background-color: var(--card-bg-color);">
+                <div class="flex-shrink-0">
+                    <div class="w-32 h-32 rounded-full overflow-hidden" style="background: linear-gradient(135deg, var(--accent-color), var(--accent-hover-color));">
+                        <img src="assets/images/headshots/angela-headshot.JPG" alt="angela-headshot" class="team-member-photo">
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Angela Srbinovska</h3>
+                    <p class="font-semibold text-md mt-1 uppercase tracking-wider" style="color: var(--accent-color);">ML & Computer Vision Researcher</p>
+                    <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                        Angela is the driving force behind our computer vision models. She specializes in object detection, activity recognition, and pose estimation to analyze the visual components of BWC footage. Her work is crucial for identifying non-verbal cues, the presence of weapons, and the physical dynamics of interactions, providing an objective layer of visual evidence to our analysis.
+                    </p>
+                    <div class="mt-6 flex justify-center md:justify-start items-center gap-4">
+                        <a href="https://github.com/AngelaSrbinovskax" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/angela-srbinovska-8a565b249/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--Vivek-->
+            <div class="team-card-large flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 p-8 rounded-xl" style="background-color: var(--card-bg-color);">
+                <div class="flex-shrink-0">
+                    <div class="w-32 h-32 rounded-full overflow-hidden" style="background: linear-gradient(135deg, var(--accent-color), var(--accent-hover-color));">
+                        <img src="assets/images/headshots/vivek-headshot.JPG" alt="angela-headshot" class="team-member-photo">
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Vivek Senthil</h3>
+                    <p class="font-semibold text-md mt-1 uppercase tracking-wider" style="color: var(--accent-color);">ML & Data Engineering Researcher</p>
+                    <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                        Vivek architects the robust data pipelines and machine learning infrastructure that power the OpenBWC platform. He focuses on creating scalable, efficient systems for processing vast amounts of video data. His expertise ensures that our models are not only accurate but also deployable and maintainable, making our research accessible and practical for real-world application.
+                    </p>
+                    <div class="mt-6 flex justify-center md:justify-start items-center gap-4">
+                        <a href="https://github.com/viveksenthil3" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/vivek-senthil-150101174/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors" style="background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--card-bg-color); border-top: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
+        <div class="container mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
+            <p style="opacity: 0.7;">&copy; 2025 OpenBWC. All Rights Reserved.</p>
+            <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                <a href="https://github.com/OpenBWC" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-orange-400 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+   <script src="assets/js/main.js"></script>
+</body>
+</html>

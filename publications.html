@@ -3,80 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OpenBWC publications, research, and findings">
     <title>Publications - OpenBWC</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/style.css"> 
-</head>
-<body class="antialiased">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Inline styles for Publication Cards to ensure they look perfect immediately */
+        .pubs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-    <header class="sticky top-0 z-50" style="background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2 nav-link">
-                <a href="index.html" class="flex items-center space-x-2 nav-link">
+        .pub-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .pub-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pub-tag.arxiv { color: #B31B1B; border-color: rgba(179, 27, 27, 0.2); background: rgba(179, 27, 27, 0.05); }
+        .pub-tag.crimrxiv { color: #2D3748; border-color: rgba(45, 55, 72, 0.2); background: rgba(45, 55, 72, 0.05); }
+
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .pub-abstract {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-left: 3px solid var(--primary-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo-link">
                 <img src="assets/images/logos/openbwc-rectangle-logo.png" alt="OpenBWC Logo" class="logo-img">
-                </a>
-                </a>
             </a>
 
-            <div id="mobile-menu" class="md:hidden px-6 bg-opacity-95" style="background-color: var(--bg-color);">
+            <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="team.html" class="nav-link">Who We Are</a>
-                <a href="publications.html" class="nav-link">Publications</a>
+                <a href="publications.html" class="nav-link active">Publications</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
 
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="team.html" class="nav-link">Who We Are</a>
-                <a href="publications.html" class="nav-link">Publications</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </div>
-
-            <div class="flex items-center space-x-4">
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider round"></div>
-                    </label>
-                </div>
-                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" style="color: var(--text-color);">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <label class="theme-toggle" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" hidden>
+                    <div class="theme-toggle-slider"></div>
+                </label>
+                
+                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
             </div>
         </nav>
         
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="team.html" class="nav-link">Who We Are</a>
+            <a href="publications.html" class="nav-link active">Publications</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
     </header>
 
-    <main class="container mx-auto px-6 py-8 md:py-16">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold">Publications</h2>
-            <p class="mt-4 text-lg" style="opacity: 0.8;">Our research and findings.</p>
-            <p class="mt-8">
-                Content for this section is coming soon. Please check back later for our published papers, articles, and conference presentations.
-            </p>
-        </div>
-    </main>
-
-    <footer style="background-color: var(--card-bg-color); border-top: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
-        <div class="container mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
-            <p style="opacity: 0.7;">&copy; 2025 OpenBWC. All Rights Reserved.</p>
-            <div class="flex items-center space-x-4 mt-4 sm:mt-0">
-                <a href="https://github.com/OpenBWC" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-orange-400 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    <span>GitHub</span>
-                </a>
+    <section class="section" style="padding-top: 3rem; padding-bottom: 2rem;">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div class="accent-bar" style="margin: 0 auto 1.5rem;"></div>
+                <h1 class="mb-3">Publications</h1>
+                <p style="font-size: 1.25rem;">
+                    Interdisciplinary research at the intersection of AI, Criminology, and Ethics.
+                </p>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="pubs-grid">
+
+                <article class="card">
+                    <div class="pub-meta">
+                        <span class="pub-tag arxiv">ArXiv Preprint</span>
+                        <span class="pub-tag">Computer Vision</span>
+                        <span class="pub-tag">AI Ethics</span>
+                        <span>May 2025</span>
+                    </div>
+                    
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem;">
+                        <a href="https://arxiv.org/abs/2504.20007" target="_blank" style="text-decoration: none; color: inherit;">
+                            Towards AI-Driven Policing: Interdisciplinary Knowledge Discovery from Police Body-Worn Camera Footage
+                        </a>
+                    </h2>
+                    
+                    <div class="pub-authors">
+                        Anita Srbinovska, Angela Srbinovska, Vivek Senthil, Adrian Martin, John McCluskey, Jonathan Bateman, Ernest Fokoué
+                    </div>
+
+                    <div class="pub-abstract">
+                        <strong>Abstract:</strong> This paper proposes a novel interdisciplinary framework for analyzing police body-worn camera (BWC) footage from the Rochester Police Department (RPD) using advanced artificial intelligence (AI) and statistical machine learning (ML) techniques. Our goal is to detect, classify, and analyze patterns of interaction between police officers and civilians to identify key behavioral dynamics, such as respect, disrespect, escalation, and de-escalation...
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="https://arxiv.org/abs/2504.20007" target="_blank" class="btn btn-primary">
+                            Read on ArXiv
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                        </a>
+                        <a href="https://arxiv.org/pdf/2504.20007" target="_blank" class="btn btn-secondary">
+                            Download PDF
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="pub-meta">
+                        <span class="pub-tag crimrxiv">CrimRxiv</span>
+                        <span class="pub-tag">Criminology</span>
+                        <span class="pub-tag">Methodology</span>
+                        <span>May 2025</span>
+                    </div>
+                    
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem;">
+                        <a href="https://www.crimrxiv.com/pub/cpuzkipl/release/5" target="_blank" style="text-decoration: none; color: inherit;">
+                            Beyond the Lens: Integrating Interdisciplinary Expertise for Enhanced Knowledge Discovery from Police Body-Worn Camera Footage
+                        </a>
+                    </h2>
+                    
+                    <div class="pub-authors">
+                        Angela Srbinovska, Jonathan Bateman, Anita Srbinovska, John McCluskey, Adrian Martin, Ernest Fokoué
+                    </div>
+
+                    <div class="pub-abstract">
+                        <strong>Abstract:</strong> A comprehensive examination of integrating domain expertise from criminology with computer science methodologies. This study addresses the challenges of validating AI models in high-stakes environments and proposes a collaborative workflow for enhancing the utility and reliability of BWC data analysis in policing reform.
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="https://www.crimrxiv.com/pub/cpuzkipl/release/5" target="_blank" class="btn btn-primary">
+                            Read on CrimRxiv
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <a href="index.html" class="footer-brand-link">
+                <img src="assets/images/logos/openbwc-square-logo.jpg" alt="OpenBWC" class="footer-logo-img">
+                <span>OpenBWC</span>
+            </a>
+            <p class="footer-text">
+                &copy; <span id="year"></span>. Designed for transparency.
+            </p>
+        </div>
+
+        <div class="footer-nav-links">
+            <a href="about.html" class="footer-link">About</a>
+            <a href="team.html" class="footer-link">Team</a>
+            <a href="publications.html" class="footer-link">Publications</a>
+            <a href="privacy.html" class="footer-link">Privacy</a>
+            <a href="tos.html" class="footer-link">Terms</a>
+        </div>
+
+        <div class="footer-social-links">
+            <a href="https://github.com/OpenBWC" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/company/openbwc" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</footer>
 
     <script src="assets/js/main.js"></script>
 </body>

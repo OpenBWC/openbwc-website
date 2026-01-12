@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - OpenBWC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50" style="background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+             <a href="index.html" class="flex items-center space-x-2 nav-link">
+                <a href="index.html" class="flex items-center space-x-2 nav-link">
+                <img src="assets/images/logos/openbwc-rectangle-logo.png" alt="OpenBWC Logo" class="logo-img">
+                </a>
+                </a>
+            </a>
+
+            <div id="mobile-menu" class="md:hidden px-6 bg-opacity-95" style="background-color: var(--bg-color);">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="team.html" class="nav-link">Who We Are</a>
+                <a href="publications.html" class="nav-link">Publications</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="team.html" class="nav-link">Who We Are</a>
+                <a href="publications.html" class="nav-link">Publications</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" style="color: var(--text-color);">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold">About OpenBWC</h2>
+            <p class="mt-4 text-lg" style="opacity: 0.8;">Our commitment to transparency and ethical AI in policing.</p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-2 gap-12">
+            <div class="p-8 rounded-lg" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);">
+                <h3 class="text-2xl font-semibold" style="color: var(--accent-color);">Our Mission</h3>
+                <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                    Accurately interpret Police BWC footage by employing open source ML, CV, & NLP technologies, resulting in identifiable behavioral patterns among police & civilians, analyzed in an interdisciplinary setting.
+                </p>
+            </div>
+            <div class="p-8 rounded-lg" style="background-color: var(--card-bg-color); border: 1px solid var(--border-color);">
+                <h3 class="text-2xl font-semibold" style="color: var(--accent-color);">Our Vision</h3>
+                <p class="mt-4 text-base leading-relaxed" style="opacity: 0.9;">
+                    Improve policing through evidence-based recommendations sourced from BWC footage by leveraging AI in an ethical and unbiased manner.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-24">
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold">Our Journey</h3>
+                <p class="mt-4 text-lg" style="opacity: 0.8;">A look back at our key milestones over the last year.</p>
+            </div>
+            <div class="relative max-w-2xl mx-auto">
+                <div class="absolute left-4 top-2 h-full w-0.5 -ml-[1px]" style="background-color: var(--border-color);"></div>
+                
+                    <div class="space-y-12">
+                        <div class="relative pl-12">
+                            <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                            <p class="font-semibold" style="color: var(--accent-color);">May 2024</p>
+                            <h4 class="font-bold text-xl mt-1">Prototype Development</h4>
+                            <p class="mt-1 text-base" style="opacity: 0.9;">Began development of the core analysis engine, focusing on computer vision models for object and behavior detection.</p>
+                        </div>
+                    <div class="space-y-12">
+                    <div class="relative pl-12">
+                        <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                        <p class="font-semibold" style="color: var(--accent-color);">June 2024</p>
+                        <h4 class="font-bold text-xl mt-1">Prototype Development</h4>
+                        <p class="mt-1 text-base" style="opacity: 0.9;">Began development of the core analysis engine, focusing on computer vision models for object and behavior detection.</p>
+                    </div>
+                    <div class="relative pl-12">
+                        <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                        <p class="font-semibold" style="color: var(--accent-color);">June 2024</p>
+                        <h4 class="font-bold text-xl mt-1">Prototype Development</h4>
+                        <p class="mt-1 text-base" style="opacity: 0.9;">Began development of the core analysis engine, focusing on computer vision models for object and behavior detection.</p>
+                    </div>
+
+
+
+                    <div class="relative pl-12">
+                        <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                        <p class="font-semibold" style="color: var(--accent-color);">February 2025</p>
+                        <h4 class="font-bold text-xl mt-1">Prototype Development</h4>
+                        <p class="mt-1 text-base" style="opacity: 0.9;">Began development of the core analysis engine, focusing on computer vision models for object and behavior detection.</p>
+                    </div>
+                    
+                    <div class="relative pl-12">
+                        <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                        <p class="font-semibold" style="color: var(--accent-color);">May 2025</p>
+                        <h4 class="font-bold text-xl mt-1">Data Partnership</h4>
+                        <p class="mt-1 text-base" style="opacity: 0.9;">Secured first partnership for anonymized BWC footage, enabling real-world testing and model refinement.</p>
+                    </div>
+                    
+                    <div class="relative pl-12">
+                        <div class="absolute left-4 top-1 w-4 h-4 rounded-full -translate-x-1/2" style="background-color: var(--accent-color); border: 3px solid var(--bg-color);"></div>
+                        <p class="font-semibold" style="color: var(--accent-color);">September 2025</p>
+                        <h4 class="font-bold text-xl mt-1">Public Launch</h4>
+                        <p class="mt-1 text-base" style="opacity: 0.9;">Launched the OpenBWC website and initial open-source code repositories to engage the wider community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--card-bg-color); border-top: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;">
+        <div class="container mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
+            <p style="opacity: 0.7;">&copy; 2025 OpenBWC. All Rights Reserved.</p>
+            <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                <a href="https://github.com/OpenBWC" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-orange-400 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+                       
