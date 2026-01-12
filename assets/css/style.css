@@ -373,6 +373,97 @@ nav {
   flex-wrap: wrap;
 }
 
+/* --- Impact/Problem Statement Section (Refined) --- */
+.impact-section {
+    /* Soft gradient using your brand colors at very low opacity */
+    background: linear-gradient(135deg, rgba(251, 146, 60, 0.08), rgba(18, 147, 141, 0.08));
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.impact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* The Big Stat */
+.impact-stat {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Large, but not overwhelming */
+    font-weight: 700; /* Standard bold, not extra-thick */
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    letter-spacing: -0.02em;
+}
+
+/* The Highlighted Number */
+.impact-highlight {
+    color: var(--primary-orange);
+    /* Optional: Adds a subtle gradient to just the number */
+    background: linear-gradient(135deg, var(--primary-orange), #F97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* The Description Text */
+.impact-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-secondary); /* Standard secondary text color */
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-weight: 400;
+}
+
+/* The Solution Badge */
+.impact-solution {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle lift */
+}
+
+/* Decorative background element (Optional subtle pulse) */
+.impact-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--primary-orange) 0%, transparent 70%);
+    opacity: 0.03; /* Very faint glow behind the text */
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .impact-section {
+        padding: 4rem 1.5rem;
+    }
+    .impact-description {
+        font-size: 1.1rem;
+    }
+}
+
 /* Accent Elements */
 .accent-bar {
   width: 60px;
@@ -388,6 +479,8 @@ nav {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+
 
 /* Timeline */
 .timeline {
