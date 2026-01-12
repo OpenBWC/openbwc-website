@@ -535,7 +535,7 @@ nav {
 footer {
   background: var(--card-bg);
   border-top: 1px solid var(--border-color);
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   margin-top: 5rem;
 }
 
@@ -544,32 +544,98 @@ footer {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; /* Vertically centers the three columns */
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+/* Brand Section (Left) */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 240px;
+}
+
+.footer-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 1.25rem;
+  transition: opacity var(--transition-fast);
+}
+
+.footer-brand-link:hover {
+  opacity: 0.8;
+}
+
+.footer-logo-img {
+  height: 48px;
+  width: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  box-shadow: var(--card-shadow);
 }
 
 .footer-text {
   color: var(--text-secondary);
   font-size: 0.875rem;
+  opacity: 0.8;
+  margin: 0; /* Reset margins */
 }
 
-.footer-links {
+/* Navigation Links (Center) */
+.footer-nav-links {
   display: flex;
   gap: 2rem;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
+  text-decoration: none;
 }
 
 .footer-link:hover {
   color: var(--primary-orange);
+}
+
+/* Social Links (Right) */
+.footer-social-links {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .footer-brand {
+    align-items: center; /* Center logo in the stack */
+    text-align: center;
+  }
+  
+  .footer-nav-links {
+    flex-direction: column; /* Stack nav links vertically on mobile */
+    gap: 1rem;
+  }
+  
+  .footer-social-links {
+    justify-content: center;
+  }
 }
 
 /* Form Styles */
