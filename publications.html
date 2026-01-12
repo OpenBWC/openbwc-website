@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +9,59 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Inline styles for Publication Cards to ensure they look perfect immediately */
+        .pubs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pub-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .pub-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pub-tag.arxiv { color: #B31B1B; border-color: rgba(179, 27, 27, 0.2); background: rgba(179, 27, 27, 0.05); }
+        .pub-tag.crimrxiv { color: #2D3748; border-color: rgba(45, 55, 72, 0.2); background: rgba(45, 55, 72, 0.05); }
+
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .pub-abstract {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-left: 3px solid var(--primary-orange);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header / Navigation -->
     <header>
         <nav>
             <a href="index.html" class="logo-link">
@@ -24,7 +72,7 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="team.html" class="nav-link">Who We Are</a>
-                <a href="publications.html" class="nav-link">Publications</a>
+                <a href="publications.html" class="nav-link active">Publications</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
 
@@ -46,70 +94,101 @@
             <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="team.html" class="nav-link">Who We Are</a>
-            <a href="publications.html" class="nav-link">Publications</a>
+            <a href="publications.html" class="nav-link active">Publications</a>
             <a href="contact.html" class="nav-link">Contact</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="section" style="padding-top: 3rem;">
+    <section class="section" style="padding-top: 3rem; padding-bottom: 2rem;">
         <div class="container">
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
                 <div class="accent-bar" style="margin: 0 auto 1.5rem;"></div>
                 <h1 class="mb-3">Publications</h1>
                 <p style="font-size: 1.25rem;">
-                    Our research and findings.
+                    Interdisciplinary research at the intersection of AI, Criminology, and Ethics.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Coming Soon Section -->
-    <section class="section">
-        <div class="container" style="max-width: 900px;">
-            <div class="card" style="text-align: center; padding: 4rem 2rem;">
-                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-orange), var(--accent-teal)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 24 24">
-                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                    </svg>
-                </div>
-                
-                <h2 class="mb-3">Coming Soon</h2>
-                <p style="font-size: 1.125rem; max-width: 600px; margin: 0 auto 2rem;">
-                    We're currently working on groundbreaking research in AI-powered body-worn camera analysis. Our publications will be available here soon.
-                </p>
-                
-                <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
-                    <p style="font-weight: 600; color: var(--text-color);">Areas of Focus:</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;">
-                        <span style="padding: 0.5rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.875rem;">Computer Vision</span>
-                        <span style="padding: 0.5rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.875rem;">Natural Language Processing</span>
-                        <span style="padding: 0.5rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.875rem;">Behavioral Analysis</span>
-                        <span style="padding: 0.5rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.875rem;">Ethical AI</span>
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="pubs-grid">
+
+                <article class="card">
+                    <div class="pub-meta">
+                        <span class="pub-tag arxiv">ArXiv Preprint</span>
+                        <span class="pub-tag">Computer Vision</span>
+                        <span class="pub-tag">AI Ethics</span>
+                        <span>May 2025</span>
                     </div>
-                </div>
+                    
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem;">
+                        <a href="https://arxiv.org/abs/2504.20007" target="_blank" style="text-decoration: none; color: inherit;">
+                            Towards AI-Driven Policing: Interdisciplinary Knowledge Discovery from Police Body-Worn Camera Footage
+                        </a>
+                    </h2>
+                    
+                    <div class="pub-authors">
+                        Anita Srbinovska, Angela Srbinovska, Vivek Senthil, Adrian Martin, John McCluskey, Jonathan Bateman, Ernest Fokoué
+                    </div>
+
+                    <div class="pub-abstract">
+                        <strong>Abstract:</strong> This paper proposes a novel interdisciplinary framework for analyzing police body-worn camera (BWC) footage from the Rochester Police Department (RPD) using advanced artificial intelligence (AI) and statistical machine learning (ML) techniques. Our goal is to detect, classify, and analyze patterns of interaction between police officers and civilians to identify key behavioral dynamics, such as respect, disrespect, escalation, and de-escalation...
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="https://arxiv.org/abs/2504.20007" target="_blank" class="btn btn-primary">
+                            Read on ArXiv
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                        </a>
+                        <a href="https://arxiv.org/pdf/2504.20007" target="_blank" class="btn btn-secondary">
+                            Download PDF
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="pub-meta">
+                        <span class="pub-tag crimrxiv">CrimRxiv</span>
+                        <span class="pub-tag">Criminology</span>
+                        <span class="pub-tag">Methodology</span>
+                        <span>May 2025</span>
+                    </div>
+                    
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem;">
+                        <a href="https://www.crimrxiv.com/pub/cpuzkipl/release/5" target="_blank" style="text-decoration: none; color: inherit;">
+                            Beyond the Lens: Integrating Interdisciplinary Expertise for Enhanced Knowledge Discovery from Police Body-Worn Camera Footage
+                        </a>
+                    </h2>
+                    
+                    <div class="pub-authors">
+                        Angela Srbinovska, Jonathan Bateman, Anita Srbinovska, John McCluskey, Adrian Martin, Ernest Fokoué
+                    </div>
+
+                    <div class="pub-abstract">
+                        <strong>Abstract:</strong> A comprehensive examination of integrating domain expertise from criminology with computer science methodologies. This study addresses the challenges of validating AI models in high-stakes environments and proposes a collaborative workflow for enhancing the utility and reliability of BWC data analysis in policing reform.
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="https://www.crimrxiv.com/pub/cpuzkipl/release/5" target="_blank" class="btn btn-primary">
+                            Read on CrimRxiv
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="section" style="background: var(--bg-secondary); border-radius: var(--radius-xl); margin: 0 2rem; padding: 4rem 2rem;">
-        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-            <h2 class="mb-3">Stay Updated</h2>
-            <p class="mb-4" style="font-size: 1.125rem;">
-                Want to be notified when we publish new research? Follow our GitHub for the latest updates.
-            </p>
-            <a href="https://github.com/OpenBWC" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-                Follow on GitHub
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-   <footer>
+    <footer>
     <div class="footer-content">
         <div class="footer-brand">
             <a href="index.html" class="footer-brand-link">
