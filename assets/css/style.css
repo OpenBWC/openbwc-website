@@ -829,6 +829,106 @@ footer {
   text-align: center;
 }
 
+/* --- Partnerships Section --- */
+.partners-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    opacity: 0.8;
+}
+
+.partner-logo {
+    height: 40px; /* Fixed height ensures uniformity */
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%); /* Start black & white */
+    opacity: 0.6;
+    transition: all var(--transition-base);
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%); /* Color on hover */
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Dark mode adjustment for logos if they are dark images */
+[data-theme="dark"] .partner-logo {
+    filter: grayscale(100%) brightness(0) invert(1); /* Turns dark logos white */
+    opacity: 0.5;
+}
+
+[data-theme="dark"] .partner-logo:hover {
+    filter: none; /* Show original color on hover */
+    opacity: 1;
+}
+
+
+/* --- Press Room Section --- */
+.press-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.press-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all var(--transition-base);
+    text-decoration: none; /* Remove underline from link */
+    height: 100%;
+}
+
+.press-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-orange);
+}
+
+.press-logo-container {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.press-logo {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* In dark mode, invert press logos if they are black text transparent PNGs */
+[data-theme="dark"] .press-logo {
+    filter: brightness(0) invert(1);
+}
+
+.press-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.press-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 .mb-1 { margin-bottom: var(--spacing-xs); }
 .mb-2 { margin-bottom: var(--spacing-sm); }
 .mb-3 { margin-bottom: var(--spacing-md); }
