@@ -1,0 +1,188 @@
+/* assets/css/style.css */
+
+/* --- Variables & Theme Setup --- */
+:root {
+    --bg-light: #ffffff;
+    --text-light: #111827;
+    --accent-light: #FB923C; /* Light Orange */
+    --accent-hover-light: #F97316;
+    --border-light: #E5E7EB;
+    --card-bg-light: #F9FAFB;
+    --card-hover-border-light: var(--accent-light);
+
+    --bg-dark: #111827;
+    --text-dark: #F9FAFB;
+    --accent-dark: #FDBA74; /* Lighter Orange for Dark Mode */
+    --accent-hover-dark: #FB923C;
+    --border-dark: #374151;
+    --card-bg-dark: #1F2937;
+    --card-hover-border-dark: var(--accent-dark);
+
+    /* Default to light mode */
+    --bg-color: var(--bg-light);
+    --text-color: var(--text-light);
+    --accent-color: var(--accent-light);
+    --accent-hover-color: var(--accent-hover-light);
+    --border-color: var(--border-light);
+    --card-bg-color: var(--card-bg-light);
+    --card-hover-border-color: var(--card-hover-border-light);
+}
+
+body.dark {
+    --bg-color: var(--bg-dark);
+    --text-color: var(--text-dark);
+    --accent-color: var(--accent-dark);
+    --accent-hover-color: var(--accent-hover-dark);
+    --border-color: var(--border-dark);
+    --card-bg-color: var(--card-bg-dark);
+    --card-hover-border-color: var(--card-hover-border-dark);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Navigation --- */
+header {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-link {
+    color: var(--text-color);
+    transition: color 0.2s ease;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.nav-link.active {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+/* --- Components & Utils --- */
+.logo-img {
+    height: 32px;
+    width: auto;
+}
+
+footer {
+    background-color: var(--card-bg-color);
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- Theme Toggle Switch --- */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+.theme-switch {
+    display: inline-block;
+    height: 26px;
+    position: relative;
+    width: 50px;
+}
+.theme-switch input {
+    display:none;
+}
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 18px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 18px;
+}
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* --- Animations (Home Page) --- */
+#bwc-shutter {
+    animation: open-close 8s infinite ease-in-out;
+    transform-origin: 50% 50%;
+}
+
+#bwc-rec-light {
+    animation: blink 1.5s infinite;
+}
+
+@keyframes open-close {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.05); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+/* Typed Cursor */
+.typed-cursor {
+    color: var(--accent-color);
+    opacity: 1;
+    animation: typedjsBlink 0.7s infinite;
+}
+@keyframes typedjsBlink {
+    50% { opacity: 0.0; }
+}
+
+/* --- Team Page Styles --- */
+.team-card-large {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+.team-card-large:hover {
+    transform: translateY(-5px);
+    border-color: var(--card-hover-border-color);
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.07), 0 8px 10px -6px rgba(0,0,0,0.1);
+}
+
+.team-member-photo {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 3px solid var(--accent-color);
+}
