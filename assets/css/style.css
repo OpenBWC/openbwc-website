@@ -111,16 +111,45 @@ header {
     }
 }
 
-/* --- Components & Utils --- */
-.logo-img {
-    height: 128px; /* Increased height for a larger logo */
-    width: auto;
-    transition: transform 0.3s ease;
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 38px; /* Slightly smaller on mobile to save space */
+    }
 }
 
-.logo-img:hover {
-    transform: scale(1.05); /* Subtle zoom effect on hover */
+/* --- DARK MODE LOGO FIX --- */
+/* Your logo has dark text. On the dark theme background, it will be invisible.
+   This filter makes the logo bright white/monochrome when Dark Mode is active.
+*/
+body.dark .logo-img {
+    filter: brightness(0) invert(1);
 }
+
+/* If you hover in dark mode, keep it white but add the scale */
+body.dark .logo-img:hover {
+    transform: scale(1.05);
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));
+}
+
+/* --- Components & Utils --- */
+
+.logo-img {
+    height: 45px; /* Perfect height for horizontal logos */
+    width: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    
+    /* Ensure it looks sharp */
+    display: block;
+}
+
+/* Hover Zoom Effect (Maintains the 'old styling' logic you requested) */
+.logo-img:hover {
+    transform: scale(1.05); 
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Adds a subtle pop */
+}
+
+
 
 footer {
     background-color: var(--card-bg-color);
