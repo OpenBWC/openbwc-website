@@ -1,0 +1,19 @@
+/* OpenBWC Modern Design System - Main Entry */
+
+/* 1. Tokens & Theme */
+@import '1-variables.css';
+
+/* 2. Base & Typography */
+@import '2-base.css';
+
+/* 3. Global Layout (Nav/Footer) */
+@import '3-layout.css';
+
+/* 4. Reusable Components */
+@import '4-components.css';
+
+/* 5. Page Sections */
+@import '5-sections.css';
+
+/* 6. Specific Modules */
+@import '6-partners.css';
