@@ -1,0 +1,16 @@
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; font-weight: 600; font-size: 0.9375rem; border-radius: var(--radius-md); border: none; cursor: pointer; transition: all var(--transition-base); }
+.btn-primary { background: var(--primary-orange); color: white; box-shadow: 0 4px 12px rgba(255, 138, 87, 0.3); }
+.btn-primary:hover { background: var(--primary-orange-dark); transform: translateY(-2px); }
+.btn-secondary { background: var(--card-bg); color: var(--text-color); border: 1px solid var(--border-color); }
+.btn-secondary:hover { border-color: var(--primary-orange); transform: translateY(-2px); }
+
+/* Cards */
+.card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--spacing-lg); transition: all var(--transition-base); box-shadow: var(--card-shadow); }
+.card:hover { transform: translateY(-4px); border-color: var(--primary-orange); }
+
+/* Forms */
+.form-group { margin-bottom: 1.5rem; }
+.form-label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+.form-input, .form-textarea { width: 100%; padding: 0.875rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-color); }
+.form-input:focus { outline: none; border-color: var(--primary-orange); }

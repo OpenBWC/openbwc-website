@@ -1,0 +1,62 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Brand Colors */
+  --primary-orange: #FF8A57;
+  --primary-orange-dark: #E67744;
+  --primary-orange-light: #FFB08F;
+  
+  /* Accent Colors */
+  --accent-cream: #F4E5DF;
+  --accent-forest: #334744;
+  --accent-teal: #12938D;
+  --accent-mint: #1CEE5C;
+  
+  /* Light Mode */
+  --bg-light: #FFFFFF;
+  --bg-light-secondary: #F8F9FA;
+  --text-light: #1A1A1A;
+  --text-light-secondary: #4A4A4A;
+  --border-light: rgba(0, 0, 0, 0.08);
+  --card-bg-light: #FFFFFF;
+  --card-shadow-light: 0 2px 20px rgba(0, 0, 0, 0.06);
+  
+  /* Dark Mode */
+  --bg-dark: #0A0F14;
+  --bg-dark-secondary: #131920;
+  --text-dark: #F0F0F0;
+  --text-dark-secondary: #B0B0B0;
+  --border-dark: rgba(255, 255, 255, 0.1);
+  --card-bg-dark: #161D26;
+  --card-shadow-dark: 0 2px 30px rgba(0, 0, 0, 0.4);
+  
+  /* Config */
+  --font-primary: 'DM Sans', 'Inter', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Default Theme Mapping */
+  --bg-color: var(--bg-light);
+  --bg-secondary: var(--bg-light-secondary);
+  --text-color: var(--text-light);
+  --text-secondary: var(--text-light-secondary);
+  --border-color: var(--border-light);
+  --card-bg: var(--card-bg-light);
+  --card-shadow: var(--card-shadow-light);
+}
+
+[data-theme="dark"] {
+  --bg-color: var(--bg-dark);
+  --bg-secondary: var(--bg-dark-secondary);
+  --text-color: var(--text-dark);
+  --text-secondary: var(--text-dark-secondary);
+  --border-color: var(--border-dark);
+  --card-bg: var(--card-bg-dark);
+  --card-shadow: var(--card-shadow-dark);
+}
