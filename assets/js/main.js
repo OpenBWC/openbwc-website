@@ -39,6 +39,12 @@ const mobileMenu = {
     this.menuBtn = document.getElementById('mobile-menu-btn');
     this.menu = document.getElementById('mobile-menu');
     this.isOpen = false;
+    
+    if (!this.menuBtn || !this.menu) {
+      console.warn('Mobile menu elements not found');
+      return;
+    }
+    
     this.bindEvents();
   },
 
@@ -49,38 +55,62 @@ const mobileMenu = {
     
     // Prevent body scroll when menu is open
     document.body.style.overflow = this.isOpen ? 'hidden' : '';
+    
+    // Add aria-expanded for accessibility
+    this.menuBtn.setAttribute('aria-expanded', this.isOpen);
   },
 
   close() {
+    if (!this.isOpen) return;
+    
     this.isOpen = false;
     this.menu.classList.remove('active');
     this.updateButton();
     document.body.style.overflow = '';
+    this.menuBtn.setAttribute('aria-expanded', 'false');
+  },
+
+  open() {
+    if (this.isOpen) return;
+    
+    this.isOpen = true;
+    this.menu.classList.add('active');
+    this.updateButton();
+    document.body.style.overflow = 'hidden';
+    this.menuBtn.setAttribute('aria-expanded', 'true');
   },
 
   updateButton() {
     const icon = this.menuBtn.querySelector('svg');
     if (this.isOpen) {
+      // X icon for close
       icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
     } else {
-      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />';
+      // Hamburger icon
+      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
     }
   },
 
   bindEvents() {
-    if (!this.menuBtn || !this.menu) return;
-    
-    this.menuBtn.addEventListener('click', () => this.toggle());
+    // Toggle on button click
+    this.menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.toggle();
+    });
     
     // Close menu when clicking on a link
     const links = this.menu.querySelectorAll('a');
     links.forEach(link => {
-      link.addEventListener('click', () => this.close());
+      link.addEventListener('click', () => {
+        this.close();
+      });
     });
     
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (this.isOpen && !this.menu.contains(e.target) && !this.menuBtn.contains(e.target)) {
+      if (this.isOpen && 
+          !this.menu.contains(e.target) && 
+          !this.menuBtn.contains(e.target)) {
         this.close();
       }
     });
@@ -90,6 +120,22 @@ const mobileMenu = {
       if (e.key === 'Escape' && this.isOpen) {
         this.close();
       }
+    });
+    
+    // Close menu on window resize to desktop
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 768 && this.isOpen) {
+          this.close();
+        }
+      }, 250);
+    });
+    
+    // Prevent menu close when interacting with menu itself
+    this.menu.addEventListener('click', (e) => {
+      e.stopPropagation();
     });
   }
 };
