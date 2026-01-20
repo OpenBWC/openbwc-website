@@ -1,19 +1,26 @@
-/* Import Fonts */
+/* ============================================
+   1. DESIGN TOKENS & THEME VARIABLES
+   ============================================ */
+
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Brand Colors */
+  /* -------------------- 
+     Brand Colors 
+     -------------------- */
   --primary-orange: #FF8A57;
   --primary-orange-dark: #E67744;
   --primary-orange-light: #FFB08F;
   
-  /* Accent Colors */
   --accent-cream: #F4E5DF;
   --accent-forest: #334744;
   --accent-teal: #12938D;
   --accent-mint: #1CEE5C;
   
-  /* Light Mode */
+  /* -------------------- 
+     Light Theme Colors 
+     -------------------- */
   --bg-light: #FFFFFF;
   --bg-light-secondary: #F8F9FA;
   --text-light: #1A1A1A;
@@ -22,7 +29,9 @@
   --card-bg-light: #FFFFFF;
   --card-shadow-light: 0 2px 20px rgba(0, 0, 0, 0.06);
   
-  /* Dark Mode */
+  /* -------------------- 
+     Dark Theme Colors 
+     -------------------- */
   --bg-dark: #0A0F14;
   --bg-dark-secondary: #131920;
   --text-dark: #F0F0F0;
@@ -31,17 +40,54 @@
   --card-bg-dark: #161D26;
   --card-shadow-dark: 0 2px 30px rgba(0, 0, 0, 0.4);
   
-  /* Config */
-  --font-primary: 'DM Sans', 'Inter', sans-serif;
+  /* -------------------- 
+     Typography 
+     -------------------- */
+  --font-primary: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Consolas', 'Monaco', monospace;
+  --font-size-base: 1.0625rem;
+  --line-height-base: 1.7;
+  
+  /* -------------------- 
+     Spacing Scale 
+     -------------------- */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 1rem;      /* 16px */
+  --spacing-md: 1.5rem;    /* 24px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 3rem;      /* 48px */
+  --spacing-2xl: 4rem;     /* 64px */
+  --spacing-3xl: 5rem;     /* 80px */
+  
+  /* -------------------- 
+     Border Radius 
+     -------------------- */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 100px;
   
-  /* Transitions */
+  /* -------------------- 
+     Transitions 
+     -------------------- */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
   
-  /* Default Theme Mapping */
+  /* -------------------- 
+     Z-Index Scale 
+     -------------------- */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 500;
+  --z-header: 1000;
+  --z-modal: 2000;
+  --z-tooltip: 3000;
+  
+  /* -------------------- 
+     Active Theme (Default Light) 
+     -------------------- */
   --bg-color: var(--bg-light);
   --bg-secondary: var(--bg-light-secondary);
   --text-color: var(--text-light);
@@ -51,6 +97,9 @@
   --card-shadow: var(--card-shadow-light);
 }
 
+/* -------------------- 
+   Dark Theme Override 
+   -------------------- */
 [data-theme="dark"] {
   --bg-color: var(--bg-dark);
   --bg-secondary: var(--bg-dark-secondary);

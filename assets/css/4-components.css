@@ -1,16 +1,290 @@
-/* Buttons */
-.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; font-weight: 600; font-size: 0.9375rem; border-radius: var(--radius-md); border: none; cursor: pointer; transition: all var(--transition-base); }
-.btn-primary { background: var(--primary-orange); color: white; box-shadow: 0 4px 12px rgba(255, 138, 87, 0.3); }
-.btn-primary:hover { background: var(--primary-orange-dark); transform: translateY(-2px); }
-.btn-secondary { background: var(--card-bg); color: var(--text-color); border: 1px solid var(--border-color); }
-.btn-secondary:hover { border-color: var(--primary-orange); transform: translateY(-2px); }
+/* ============================================
+   4. REUSABLE COMPONENTS
+   ============================================ */
 
-/* Cards */
-.card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--spacing-lg); transition: all var(--transition-base); box-shadow: var(--card-shadow); }
-.card:hover { transform: translateY(-4px); border-color: var(--primary-orange); }
+/* -------------------- 
+   Buttons 
+   -------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  white-space: nowrap;
+}
 
-/* Forms */
-.form-group { margin-bottom: 1.5rem; }
-.form-label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
-.form-input, .form-textarea { width: 100%; padding: 0.875rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-color); }
-.form-input:focus { outline: none; border-color: var(--primary-orange); }
+.btn-primary {
+  background: var(--primary-orange);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 138, 87, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--primary-orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 138, 87, 0.4);
+}
+
+.btn-secondary {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary-orange);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-secondary);
+}
+
+/* -------------------- 
+   Cards 
+   -------------------- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+  box-shadow: var(--card-shadow);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary-orange);
+}
+
+/* -------------------- 
+   Team Cards 
+   -------------------- */
+.team-card {
+  display: flex;
+  gap: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all var(--transition-base);
+  align-items: flex-start;
+}
+
+.team-card:hover {
+  border-color: var(--primary-orange);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.team-avatar {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--primary-orange), var(--accent-teal));
+  padding: 3px;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--bg-color);
+}
+
+.team-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-orange), var(--accent-teal));
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.team-info {
+  flex: 1;
+}
+
+.team-info h3 {
+  margin-bottom: 0.5rem;
+}
+
+.team-role {
+  color: var(--primary-orange);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.team-bio {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.team-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+  border-color: var(--primary-orange);
+  background: var(--primary-orange);
+  color: white;
+}
+
+.social-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* -------------------- 
+   Forms 
+   -------------------- */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-size: 0.9375rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(255, 138, 87, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 150px;
+  line-height: var(--line-height-base);
+}
+
+/* -------------------- 
+   Accent Elements 
+   -------------------- */
+.accent-bar {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-orange), var(--accent-teal));
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-orange), var(--accent-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* -------------------- 
+   Timeline 
+   -------------------- */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary-orange), var(--accent-teal));
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 4rem;
+  margin-bottom: 3rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 22px;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--primary-orange);
+  border: 4px solid var(--bg-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 138, 87, 0.2);
+}
+
+.timeline-date {
+  color: var(--primary-orange);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.timeline-content h4 {
+  margin-bottom: 0.75rem;
+}
+
+.timeline-content p {
+  margin-top: 0.5rem;
+}

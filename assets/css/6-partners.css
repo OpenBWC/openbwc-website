@@ -1,36 +1,87 @@
-/* --- PARTNERS & SPONSORS MODULE --- */
+/* ============================================
+   6. PARTNERS & SPONSORS
+   ============================================ */
 
-/* 1. Partners Grid Container */
-.partners-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    margin: 2rem 0;
-    opacity: 0.8;
+/* -------------------- 
+   Partners Section 
+   -------------------- */
+.partners-section {
+  padding: 4rem 2rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  margin: 0 2rem;
 }
 
-/* 2. Partner Logos (Standard) */
+.partners-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.partners-header h2 {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.partners-header p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* -------------------- 
+   Partner Logos 
+   -------------------- */
+.partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin: 2rem 0;
+  opacity: 0.8;
+}
+
 .partner-logo {
-    height: 150px; 
-    width: auto;
-    object-fit: contain;
-    /* Start grayscale/faded */
-    filter: grayscale(100%); 
-    opacity: 0.7;
-    transition: all var(--transition-base);
-    /* Prevent layout shifts */
-    display: block; 
+  height: 80px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.6);
+  transition: all var(--transition-base);
 }
 
 .partner-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-    transform: scale(1.05);
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
 }
 
-/* 3. Sponsor Cards */
+/* Dark Mode - Default (Full Color) */
+[data-theme="dark"] .partner-logo {
+  filter: grayscale(0%) brightness(1.1);
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .partner-logo:hover {
+  filter: brightness(1.2);
+  opacity: 1;
+}
+
+/* Dark Mode - Inverted Logos */
+[data-theme="dark"] .partner-logo.invert-dark {
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.8;
+}
+
+[data-theme="dark"] .partner-logo.invert-dark:hover {
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)) !important;
+}
+
+/* -------------------- 
+   Sponsor Cards 
+   -------------------- */
 .sponsor-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -42,7 +93,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  height: 100%; /* Ensures equal height in grid */
+  text-decoration: none;
 }
 
 .sponsor-card:hover {
@@ -74,6 +125,15 @@
   filter: grayscale(0%) opacity(1);
 }
 
+/* Dark Mode Sponsor Logos */
+[data-theme="dark"] .sponsor-logo-wrapper img.invert-dark {
+  filter: grayscale(100%) opacity(0.7) invert(1);
+}
+
+[data-theme="dark"] .sponsor-card:hover .sponsor-logo-wrapper img.invert-dark {
+  filter: grayscale(0%) opacity(1) invert(1);
+}
+
 .sponsor-name {
   font-size: 1rem;
   font-weight: 600;
@@ -101,35 +161,4 @@
   color: var(--primary-orange);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-/* --- DARK MODE LOGIC --- */
-
-/* Case A: Color Logos in Dark Mode */
-[data-theme="dark"] .partner-logo,
-[data-theme="dark"] .sponsor-logo-wrapper img {
-    /* Show color but brighten slightly to pop against dark bg */
-    filter: grayscale(0%) brightness(1.1);
-    opacity: 0.9;
-}
-
-[data-theme="dark"] .partner-logo:hover,
-[data-theme="dark"] .sponsor-card:hover .sponsor-logo-wrapper img {
-     filter: brightness(1.2); 
-     opacity: 1;
-}
-
-/* Case B: "Invert Dark" Utility 
-   Use this class (class="partner-logo invert-dark") for logos 
-   that are black text (like RIT or NY Times) so they turn white in dark mode.
-*/
-[data-theme="dark"] .partner-logo.invert-dark,
-[data-theme="dark"] .sponsor-logo-wrapper img.invert-dark {
-    filter: brightness(0) invert(1) opacity(0.8) !important;
-}
-
-[data-theme="dark"] .partner-logo.invert-dark:hover,
-[data-theme="dark"] .sponsor-card:hover .sponsor-logo-wrapper img.invert-dark {
-    opacity: 1;
-    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,0.3)) !important;
 }
