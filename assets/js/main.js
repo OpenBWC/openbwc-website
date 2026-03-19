@@ -217,9 +217,9 @@ const typedText = {
 };
 
 // Form Handling
-const contactForm = {
+  const contactForm = {
   init() {
-    const form = document.querySelector('form');
+    const form = document.getElementById('my-form'); // Using the ID we added earlier
     if (!form) return;
     
     form.addEventListener('submit', (e) => this.handleSubmit(e));
@@ -227,25 +227,85 @@ const contactForm = {
 
   async handleSubmit(e) {
     e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById("my-form-status");
+    const submitBtn = form.querySelector('button[type="submit"]');
     
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
+    // 1. Capture Form Data
+    const formData = new FormData(form);
     
-    // Show loading state
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
+    // 2. UI: Show loading state
+    // We target a span or the firstChild so we don't destroy the SVG icon
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Sending...';
     submitBtn.disabled = true;
     
-    // Simulate form submission (replace with actual endpoint)
-    setTimeout(() => {
-      alert('Thank you for your message! We will get back to you soon.');
-      e.target.reset();
-      submitBtn.textContent = originalText;
+    // 3. The Actual Request
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Success Logic
+        status.innerHTML = "Success! We've received your message.";
+        status.style.color = "var(--accent-teal)";
+        form.reset();
+      } else {
+        // Server-side error logic (e.g., invalid email)
+        const data = await response.json();
+        if (data.errors) {
+          status.innerHTML = data.errors.map(err => err.message).join(", ");
+        } else {
+          status.innerHTML = "Oops! Something went wrong.";
+        }
+        status.style.color = "#ff4b2b"; // A bright red/orange
+      }
+    } catch (error) {
+      // Network error logic
+      status.innerHTML = "Network error. Please try again later.";
+      status.style.color = "#ff4b2b";
+    } finally {
+      // 4. Reset Button State
+      submitBtn.innerHTML = originalHTML;
       submitBtn.disabled = false;
-    }, 1000);
+    }
   }
 };
+// const contactForm = {
+//   init() {
+//     const form = document.querySelector('form');
+//     if (!form) return;
+    
+//     form.addEventListener('submit', (e) => this.handleSubmit(e));
+//   },
+
+//   async handleSubmit(e) {
+//     e.preventDefault();
+    
+//     const formData = new FormData(e.target);
+//     const data = Object.fromEntries(formData);
+    
+//     // Show loading state
+//     const submitBtn = e.target.querySelector('button[type="submit"]');
+//     const originalText = submitBtn.textContent;
+//     submitBtn.textContent = 'Sending...';
+//     submitBtn.disabled = true;
+    
+//     // Simulate form submission (replace with actual endpoint)
+//     setTimeout(() => {
+//       alert('Thank you for your message! We will get back to you soon.');
+//       e.target.reset();
+//       submitBtn.textContent = originalText;
+//       submitBtn.disabled = false;
+//     }, 1000);
+//   }
+// };
+
 
 // Smooth Scroll for Anchor Links
 const smoothScroll = {
