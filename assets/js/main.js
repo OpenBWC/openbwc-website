@@ -30,6 +30,13 @@ const themeManager = {
     if (themeToggle) {
       themeToggle.addEventListener('change', () => this.toggleTheme());
     }
+
+    // Keep the theme in sync across other open tabs/pages in real time
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'theme' && e.newValue && e.newValue !== this.theme) {
+        this.setTheme(e.newValue);
+      }
+    });
   }
 };
 

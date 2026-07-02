@@ -12,6 +12,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
+    <!-- Set theme before paint to avoid a flash of the wrong theme -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
+
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/main.css">
 
@@ -75,7 +85,7 @@
                     <span id="typed-headline"></span>
                 </h1>
                 <p>
-                    Leveraging AI to ethically and transparently analyze Body-Worn Camera footage for evidence-based policing reform.
+                    The open-source backbone of the body-worn camera ecosystem — using AI to analyze footage ethically and transparently for evidence-based policing reform.
                 </p>
                 <div class="hero-buttons">
                     <a href="about.html" class="btn btn-primary">Learn More</a>
@@ -189,7 +199,7 @@
             
             <div class="impact-solution">
                 <span style="color: var(--accent-teal);">●</span>
-                <span>We are solving <strong style="color: var(--text-color); font-weight: 700;">Privacy-Preserving Analysis</strong> to address this.</span>
+                <span>We're building <strong style="color: var(--text-color); font-weight: 700;">privacy-preserving analysis</strong> to change that.</span>
             </div>
         </div>
     </section>
@@ -237,6 +247,35 @@
                     </div>
                     <h3 class="mb-2">Transparent</h3>
                     <p>Open-source methodology that anyone can review, audit, and contribute to for collective improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Open vs Private Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="accent-bar" style="margin: 0 auto 1.5rem;"></div>
+                <h2 class="mb-3">Open Where It Counts, Private Where It Matters</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 1.125rem;">
+                    We keep our methods open for anyone to inspect, while sensitive footage stays under the control of the people it belongs to.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <div class="card">
+                    <h3 class="mb-2" style="color: var(--primary-orange);">What's Public</h3>
+                    <p>Our algorithms, models, and insights are open source — free to review, audit, and build on.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="mb-2" style="color: var(--primary-orange);">What's Private</h3>
+                    <p>Your data stays yours. Body-worn camera footage is never collected or shared through OpenBWC.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="mb-2" style="color: var(--primary-orange);">Built to Run Offline</h3>
+                    <p>Our tools are designed to run locally, so sensitive footage never has to leave your environment.</p>
                 </div>
             </div>
         </div>
@@ -407,9 +446,9 @@
     <!-- CTA Section -->
     <section class="section" style="background: var(--bg-secondary); border-radius: var(--radius-xl); margin: 0 2rem; padding: 4rem 2rem;">
         <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <h2 class="mb-3">Join the Movement</h2>
+            <h2 class="mb-3">Get Involved</h2>
             <p class="mb-4" style="font-size: 1.125rem;">
-                Help us build a more transparent and accountable future for law enforcement through open-source AI analysis.
+                Help build a more transparent and accountable future for law enforcement through open-source AI analysis.
             </p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="https://github.com/OpenBWC" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
