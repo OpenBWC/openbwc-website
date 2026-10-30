@@ -82,7 +82,8 @@
             <div class="hero-text">
                 <div class="accent-bar"></div>
                 <h1>
-                    <span id="typed-headline"></span>
+                    <span class="sr-only">OpenBWC: Open Body-Worn Camera</span>
+                    <span id="typed-headline" aria-hidden="true"></span>
                 </h1>
                 <p>
                     The open-source backbone of the body-worn camera ecosystem — using AI to analyze footage ethically and transparently for evidence-based policing reform.
@@ -194,12 +195,51 @@
             </h2>
             
             <p class="impact-description">
-                The vast majority of policing captures officers simply doing their jobs—a reality that stays hidden due to privacy laws and massive data volume.
+                The vast majority of footage captures officers simply doing their jobs—a reality that stays hidden due to privacy laws and massive data volume.
             </p>
             
             <div class="impact-solution">
                 <span style="color: var(--accent-teal);">●</span>
                 <span>We're building <strong style="color: var(--text-color); font-weight: 700;">privacy-preserving analysis</strong> to change that.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Build Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="accent-bar" style="margin: 0 auto 1.5rem;"></div>
+                <h2 class="mb-3">What We Build</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 1.125rem;">
+                    Body-worn cameras record far more video than anyone could watch. Our research tools help analysts, trainers, and researchers find the moments that matter.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <div class="card" style="display: flex; flex-direction: column;">
+                    <h3 class="mb-2">Visual Timelines</h3>
+                    <p class="mb-3">Breaks long recordings into short segments labeled by context and activity level, so reviewers can jump to key moments instead of watching hours of video.</p>
+                    <a href="publications.html#visual-timelines" class="card-link">Read the research &rarr;</a>
+                </div>
+
+                <div class="card" style="display: flex; flex-direction: column;">
+                    <h3 class="mb-2">Speech Transcription</h3>
+                    <p class="mb-3">Turns what is said on camera into text, even through sirens, radio chatter, and background noise, using affordable off-the-shelf hardware.</p>
+                    <a href="publications.html#whisper-transcription" class="card-link">Read the research &rarr;</a>
+                </div>
+
+                <div class="card" style="display: flex; flex-direction: column;">
+                    <h3 class="mb-2">Searchable Footage</h3>
+                    <p class="mb-3">Lets reviewers ask questions about footage in plain language and get answers that cite the exact moments they came from.</p>
+                    <a href="publications.html#omnieye" class="card-link">Read the research &rarr;</a>
+                </div>
+
+                <div class="card" style="display: flex; flex-direction: column;">
+                    <h3 class="mb-2">Structured Reports</h3>
+                    <p class="mb-3">Turns the written narratives in police reports into organized, evidence-linked facts, after removing personal identifiers.</p>
+                    <a href="publications.html#ontology-for-policing" class="card-link">Read the research &rarr;</a>
+                </div>
             </div>
         </div>
     </section>
@@ -211,7 +251,7 @@
                 <div class="accent-bar" style="margin: 0 auto 1.5rem;"></div>
                 <h2 class="mb-3">Our Mission</h2>
                 <p style="max-width: 700px; margin: 0 auto; font-size: 1.125rem;">
-                    Accurately interpret police BWC footage by employing open source ML, CV, & NLP technologies
+                    We use open-source machine learning, computer vision, and natural language processing to accurately interpret police body-worn camera footage.
                 </p>
             </div>
             
@@ -270,12 +310,12 @@
 
                 <div class="card">
                     <h3 class="mb-2" style="color: var(--primary-orange);">What's Private</h3>
-                    <p>Your data stays yours. Body-worn camera footage is never collected or shared through OpenBWC.</p>
+                    <p>Agencies keep control of their footage. Body-worn camera footage is never collected or shared through OpenBWC.</p>
                 </div>
 
                 <div class="card">
                     <h3 class="mb-2" style="color: var(--primary-orange);">Built to Run Offline</h3>
-                    <p>Our tools are designed to run locally, so sensitive footage never has to leave your environment.</p>
+                    <p>Our tools are designed to run locally, so sensitive footage never has to leave the agency's own systems.</p>
                 </div>
             </div>
         </div>
@@ -285,7 +325,7 @@
         <div class="container">
             <div class="partners-header">
                 <h2>Trusted Partnerships & Support</h2>
-                <p>We are grateful for the support received by the following organizations</p>
+                <p>We are grateful for the support of the following organizations</p>
             </div>
             
             <!-- Partner Organizations Grid -->
@@ -492,14 +532,6 @@
             <p class="footer-text">
                 &copy; <span id="year"></span>. Designed for transparency.
             </p>
-        </div>
-
-        <div class="footer-nav-links">
-            <a href="about.html" class="footer-link">About</a>
-            <a href="team.html" class="footer-link">Team</a>
-            <a href="publications.html" class="footer-link">Publications</a>
-            <a href="privacy.html" class="footer-link">Privacy</a>
-            <a href="tos.html" class="footer-link">Terms</a>
         </div>
 
         <div class="footer-social-links">

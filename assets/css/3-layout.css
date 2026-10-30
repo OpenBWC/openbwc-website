@@ -10,26 +10,80 @@ header {
   top: 0;
   z-index: var(--z-header);
   background: var(--bg-color);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
-  transition: all var(--transition-base);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
 }
 
+/* Once the page scrolls, the bar becomes a floating liquid-glass capsule (nav::before).
+   Keep backdrop-filter, filter, and opacity off the header itself: any of them would
+   stop the glass from seeing the page behind it. */
 header.scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background: transparent;
+  border-bottom-color: transparent;
 }
 
-/* -------------------- 
-   Navigation 
+/* --------------------
+   Navigation
    -------------------- */
 nav {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
+}
+
+/* Liquid glass: frosted blur, boosted saturation, a soft top sheen, and bright edge
+   highlights. It sits behind the nav content and fades in, so the bar never changes size. */
+nav::before {
+  content: '';
+  position: absolute;
+  inset: 0.625rem 1rem;
+  z-index: -1;
+  border-radius: var(--radius-full);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0) 100%),
+    rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.04),
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  pointer-events: none;
+}
+
+header.scrolled nav::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-theme="dark"] nav::before {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 100%),
+    rgba(19, 25, 32, 0.6);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Visitors who ask their OS for less transparency get a solid bar instead */
+@media (prefers-reduced-transparency: reduce) {
+  nav::before,
+  [data-theme="dark"] nav::before {
+    background: var(--bg-color);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 /* Logo */
@@ -237,27 +291,6 @@ footer {
   font-size: 0.875rem;
   opacity: 0.8;
   margin: 0;
-}
-
-/* Footer Navigation */
-.footer-nav-links {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.footer-link {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color var(--transition-fast);
-  text-decoration: none;
-}
-
-.footer-link:hover {
-  color: var(--primary-orange);
 }
 
 /* Footer Social */

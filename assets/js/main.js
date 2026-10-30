@@ -3,16 +3,27 @@
 // Theme Management
 const themeManager = {
   init() {
-    this.theme = localStorage.getItem('theme') || 'light';
+    this.theme = this.savedTheme();
     this.setTheme(this.theme);
     this.bindEvents();
+  },
+
+  // The choice is saved in localStorage so every page and tab uses it
+  savedTheme() {
+    try {
+      return localStorage.getItem('theme') || 'light';
+    } catch (e) {
+      return 'light';
+    }
   },
 
   setTheme(theme) {
     this.theme = theme;
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (e) {}
+
     // Update toggle state
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
@@ -37,6 +48,12 @@ const themeManager = {
         this.setTheme(e.newValue);
       }
     });
+
+    // Back/Forward can show a page straight from the browser's cache, still in the theme it
+    // had when you left (Firefox doesn't replay changes made meanwhile), so re-apply the
+    // saved choice whenever a page is shown. This also resets the toggle's checked state,
+    // which browsers otherwise restore from history.
+    window.addEventListener('pageshow', () => this.setTheme(this.savedTheme()));
   }
 };
 

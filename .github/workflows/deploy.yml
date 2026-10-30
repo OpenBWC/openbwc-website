@@ -31,10 +31,16 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # prev-versions/ is an archived copy of the old site (outdated team info and a
+      # contact form that doesn't send anywhere). Keep it in the repo, but don't publish it.
+      # This only deletes it from the runner's throwaway checkout, not from the repo.
+      - name: Exclude archived pages from the published site
+        run: rm -rf prev-versions
+
       - name: Upload site as Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # The whole repo is the static site (no build step needed)
+          # The rest of the repo is the static site (no build step needed)
           path: '.'
 
       - name: Deploy to GitHub Pages

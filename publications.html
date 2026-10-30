@@ -53,6 +53,12 @@
 
         .pub-tag.arxiv { color: #B31B1B; border-color: rgba(179, 27, 27, 0.2); background: rgba(179, 27, 27, 0.05); }
         .pub-tag.crimrxiv { color: #2D3748; border-color: rgba(45, 55, 72, 0.2); background: rgba(45, 55, 72, 0.05); }
+        [data-theme="dark"] .pub-tag.crimrxiv { color: #CBD5E0; border-color: rgba(203, 213, 224, 0.2); background: rgba(203, 213, 224, 0.05); }
+
+        /* Keep linked papers (e.g. publications.html#omnieye) clear of the sticky header */
+        .pubs-grid > article {
+            scroll-margin-top: 7rem;
+        }
 
         .pub-authors {
             font-size: 0.95rem;
@@ -124,6 +130,9 @@
                 <p style="font-size: 1.25rem;">
                     Interdisciplinary research at the intersection of AI, Criminology, and Ethics.
                 </p>
+                <p style="margin-top: 1rem; font-size: 0.95rem;">
+                    Preprints are research papers shared openly before formal peer review, free for anyone to read.
+                </p>
             </div>
         </div>
     </section>
@@ -132,9 +141,9 @@
         <div class="container">
             <div class="pubs-grid">
 
-                <article class="card">
+                <article class="card" id="omnieye">
                     <div class="pub-meta">
-                        <span class="pub-tag arxiv">arXiv PrePrint</span>
+                        <span class="pub-tag arxiv">arXiv Preprint</span>
                         <span class="pub-tag">Multimodal AI</span>
                         <span class="pub-tag">BWC Analysis</span>
                         <span>September 2026</span>
@@ -168,9 +177,9 @@
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" id="whisper-transcription">
                     <div class="pub-meta">
-                        <span class="pub-tag arxiv">arXiv PrePrint</span>
+                        <span class="pub-tag arxiv">arXiv Preprint</span>
                         <span class="pub-tag">Speech Recognition</span>
                         <span class="pub-tag">Model Adaptation</span>
                         <span>July 2026</span>
@@ -208,9 +217,9 @@
 
 
                 <!-- Paper 2: Visual Timelines of Police Encounters -->
-                <article class="card">
+                <article class="card" id="visual-timelines">
                     <div class="pub-meta">
-                        <span class="pub-tag arxiv">arXiv PrePrint</span>
+                        <span class="pub-tag arxiv">arXiv Preprint</span>
                         <span class="pub-tag">Computer Vision</span>
                         <span class="pub-tag">BWC Analysis</span>
                         <span>May 2026</span>
@@ -245,9 +254,9 @@
                 </article>
 
                 <!-- Paper 1: Ontology for Policing -->
-                <article class="card">
+                <article class="card" id="ontology-for-policing">
                     <div class="pub-meta">
-                        <span class="pub-tag arxiv">arXiv PrePrint</span>
+                        <span class="pub-tag arxiv">arXiv Preprint</span>
                         <span class="pub-tag">NLP</span>
                         <span class="pub-tag">Knowledge Representation</span>
                         <span>May 2026</span>
@@ -281,9 +290,9 @@
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" id="beyond-the-lens">
                     <div class="pub-meta">
-                        <span class="pub-tag arxiv">CrimRxiv Preprint</span>
+                        <span class="pub-tag crimrxiv">CrimRxiv Preprint</span>
                         <span class="pub-tag">Criminology</span>
                         <span>May 2025</span>
                     </div>
@@ -318,11 +327,11 @@
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" id="towards-ai-driven-policing">
                     <div class="pub-meta">
-                        <span class="pub-tag arxiv">ArXiv Preprint</span>
+                        <span class="pub-tag arxiv">arXiv Preprint</span>
                         <span class="pub-tag">AI Ethics</span>
-                        <span>May 2025</span>
+                        <span>April 2025</span>
                     </div>
                     
                     <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem;">
@@ -341,7 +350,7 @@
 
                     <div class="hero-buttons">
                         <a href="https://arxiv.org/abs/2504.20007" target="_blank" class="btn btn-primary">
-                            Read on ArXiv
+                            Read on arXiv
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
                                 <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
@@ -367,14 +376,6 @@
             <p class="footer-text">
                 &copy; <span id="year"></span>. Designed for transparency.
             </p>
-        </div>
-
-        <div class="footer-nav-links">
-            <a href="about.html" class="footer-link">About</a>
-            <a href="team.html" class="footer-link">Team</a>
-            <a href="publications.html" class="footer-link">Publications</a>
-            <a href="privacy.html" class="footer-link">Privacy</a>
-            <a href="tos.html" class="footer-link">Terms</a>
         </div>
 
         <div class="footer-social-links">
